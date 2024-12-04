@@ -1,11 +1,17 @@
-const std = @import("std");
-const calc11 = @import(".src\\calc1.zig");
 
+const std = @import("std");
+const playScript = @import("other_scripts/playScript.zig");//Importing script in the src folder
+//const libcalc = @import("calc");//Importing other script that is not in src folder. Added this script as a library in build.zig
 pub fn main() !void {
     // Prints to stderr (it's a shortcut based on `std.io.getStdErr()`)
-    std.debug.print("Hello World {s}\n", .{"from user"});
-    //var v = calc.add(3,3);
-    //std.debug.print("3 + 3 is  {s}\n", .{v});
+    std.debug.print("Hello World {s}\n", .{playScript.userName}); //accessing public variable from other scripts from src folder
+    //const value = libcalc.add(3,4);
+    //const value = lib.add(3,4);
+    const value = 7;
+
+    const formatted = try std.fmt.allocPrint(std.heap.page_allocator, "{}", .{value});
+    defer std.heap.page_allocator.free(formatted);
+    std.debug.print("value in add(3,4) = {s}\n", .{formatted});//Kind of flaot to string casteing
 
     // stdout is for the actual output of your application, for example if you
     // are implementing gzip, then only the compressed bytes should be sent to

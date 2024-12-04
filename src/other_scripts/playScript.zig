@@ -1,5 +1,7 @@
 const std = @import("std");
 
+pub const userName = "maximus";
+
 pub const Object = union(enum) {//TODO check why this dont work
     Integer: i32,
     Float64: f64,

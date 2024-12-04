@@ -30,5 +30,7 @@
 
 //TODO
 # Referencing other files in src folder in main.zig
+    - simply use import
 # calling functions of libraries and packages in main.zig
+    - TODO: refer https://github.com/prime31/zig-gamekit/blob/main/build.zig
 # Use Mach game engine package and make example renderings.
